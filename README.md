@@ -1,4 +1,11 @@
-nuitinfo2014
+WhyIsItWorking
 ============
+Nuit de l'Info 2014
 
-Repository for Nuit de L'info 2014 - Team WhyIsItWorking?
+Team de l'[INSA Centre Val de Loire](http://www.insa-centrevaldeloire.fr)
+
+Let's roll !
+
+==========================================================================
+
+
