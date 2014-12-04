@@ -135,10 +135,13 @@ class CrisesController extends AppController {
 				 && $crisis['Crisis']['type'] == $this->request->data['Crisis']['type'] ) {   //1° lat/long-> 111 km 
 					debug(abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ));
 
-						$this->Crisis->id = $crisis['Crisis']['id']; 
+						//$_crise = $crisis['Crisis'];
+
+						$this->Crisis->id = $_crise['id']; 
 						///***** UPDATE DE LA CRISE AVEC NOUVELLES COORDONNEES
 						//calcul nouveau centre
-						debug($this->Crisis->data);
+						//$this->Crisis->saveField('centrex',
+						//	);
 
 						//calcul nouveau rayon
 
