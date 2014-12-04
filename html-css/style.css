@@ -44,3 +44,7 @@ p{
 .btn-lg{
     font-size : !50px;
 }
+ .big_button{
+	
+    font-size : 4em !important;
+}
