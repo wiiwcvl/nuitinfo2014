@@ -5,6 +5,13 @@ App::uses('AppModel', 'Model');
  *
  */
 class Typecrisis extends AppModel {
+	public $hasMany = array(
+		'Crise' => array(
+			'className' => 'Crise',
+			'foreignkey' => 'type'
+		)
+	);
+
 
 /**
  * Validation rules
