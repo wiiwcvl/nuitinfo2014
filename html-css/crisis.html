@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Crisis details</title>
+		<link href="cris_style.css" rel='stylesheet'/>
+		<!--bootstrap-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+	</head>
+		
+	<body>
+
+		<!-- navbar TODO:liens vers pages -->
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="accueil.html">Home</a>
+			</div>
+			<div>
+			  <ul class="nav navbar-nav">
+				<li><a href="#">World view</a></li>
+				<li><a href="news.html">Local News</a></li>
+		      </ul>
+			 <ul class="nav navbar-nav navbar-right">
+		        <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+
+		<!--panels du haut-->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Name:</b>[nom crise] &nbsp &nbsp &nbsp &nbsp &nbsp <b>Severity: </b>
+										<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%"></div></div>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<b>Description:</b>
+									[champ descript]
+								</p>
+								<p>
+									<b>Type:</b>
+									[champ type]
+								</p>
+								<p>
+									<b>Actors:</b>
+									[acteurs impliqués]
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Informations</b>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									[Contenu infos]
+								</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!--panel du bas-->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Edit crisis</b>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<button type="button" class="btn btn-danger">Edit informations</button>
+								<button type="button" class="btn btn-danger">Add an event</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!--bootstrap-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	</body>
+</html>
+
+
