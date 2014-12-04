@@ -41,3 +41,6 @@ p{
 .vert{
 	color : green;
 }
+.btn-lg{
+    font-size : !50px;
+}
