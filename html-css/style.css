@@ -1,0 +1,46 @@
+h1{
+	color : red;
+}
+
+h2{
+	color : brown;
+}
+
+h3{
+	color : grey;
+}
+
+h4{
+	color : black;
+}
+
+h5{
+	color : black;
+}
+
+h6{
+	color : black;
+}
+
+p{
+	color : grey;
+}
+
+.textbleu{
+	color : blue;
+}
+
+#moi{
+	color : green;
+}
+
+.un{
+	text.decoration : underline;	
+}
+
+.vert{
+	color : green;
+}
+.btn-lg{
+    font-size : !50px;
+}
