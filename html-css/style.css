@@ -41,6 +41,6 @@ p{
 .vert{
 	color : green;
 }
-.btn-lg{
-    font-size : !50px;
+.bigbutton{
+    font-size : 50px !important;
 }
