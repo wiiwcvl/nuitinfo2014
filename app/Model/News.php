@@ -7,17 +7,6 @@ App::uses('AppModel', 'Model');
  * @property Crise $Crise
  */
 class News extends AppModel {
-	public $belongsTo = array(
-		'Acteur' => array(
-			'className' => 'Acteur',
-			'foreignKey' => 'acteur_id'
-		),
-		'Crise' => array(
-			'className' => 'Crise',
-			'foreignKey' => 'crise_id'
-		),
-	);
-	
 /**
  * Validation rules
  *

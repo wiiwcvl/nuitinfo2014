@@ -6,23 +6,6 @@ App::uses('AppModel', 'Model');
  * @property Acteur $Acteur
  */
 class Crisis extends AppModel {
-    public $hasAndBelongsToMany = array(
-        'Acteur' => array(
-                'className' => 'Acteur',
-                'joinTable' => 'acteurs_crises',
-                'foreignKey' => 'crise_id',
-                'associationForeignKey' => 'acteur_id',
-                'order' => 'acteur.nom DESC',
-			)
-	);
-
-
-	public $belongsTo = array(
-		'Typecrise' => array(
-			'className' => 'New',
-			'foreignkey' => 'acteur_id'
-		)
-	);
 
 /**
  * Validation rules
@@ -109,6 +92,19 @@ class Crisis extends AppModel {
  *
  * @var array
  */
+
+	public $belongsTo = array(
+		'Typecrise' => array(
+			'className' => 'Typecrise',
+			'foreignKey' => 'type'
+		)
+	);
+	public $hasMany = array(
+		'New' => array(
+			'className' => 'New',
+			'foreignKey' => 'crise_id'
+		)
+	);
 	public $hasAndBelongsToMany = array(
 		'Acteur' => array(
 			'className' => 'Acteur',
