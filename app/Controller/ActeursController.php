@@ -55,7 +55,7 @@ class ActeursController extends AppController {
 				$this->Session->setFlash(__('The acteur could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
-		$crises = $this->Acteur->Crisi->find('list');
+		$crises = $this->Acteur->Crisis->find('list');
 		$this->set(compact('crises'));
 	}
 

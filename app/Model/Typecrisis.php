@@ -5,13 +5,6 @@ App::uses('AppModel', 'Model');
  *
  */
 class Typecrisis extends AppModel {
-	public $hasMany = array(
-		'Crise' => array(
-			'className' => 'Crise',
-			'foreignkey' => 'type'
-		)
-	);
-
 
 /**
  * Validation rules
@@ -20,8 +13,8 @@ class Typecrisis extends AppModel {
  */
 	public $validate = array(
 		'intitule' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
