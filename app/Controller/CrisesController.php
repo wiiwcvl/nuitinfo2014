@@ -110,6 +110,18 @@ class CrisesController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
+	private function measure($x1, $y1, $x2, $y2)
+	{
+		$R = 6378.137;
+		$dx = ($x2 - $x1) * pi() / 180;
+		$dy = ($y2 - $y1) * pi() / 180;
+
+		$a = sin($dy/2) * sin($dy/2) + cos($y1 * pi() / 180) * cos($y2 * pi() / 180) * sin($dx / 2) * sin($dx / 2);
+		$c = 2 * atan2(sqrt($a), sqrt(1-$a));
+		$d = $R * $c;
+		return $d * 1000;
+	}
+
 /**
  * signal method
  *
@@ -120,36 +132,42 @@ class CrisesController extends AppController {
  */
 	public function signal() {
 		$types = $this->Crisis->Typecrise->find("list",array("fields" => "intitule"));
-		debug($types);
+		
 		$this->set("types",$types);
 		if ($this->request->is('post')) {
 			if($this->request->data['Crisis']['centrex'] == 0 || $this->request->data['Crisis']['centrey'] == 0)
 				return;
 
 			$Crisis = $this->Crisis->find("all");
-			debug($Crisis);
+			
+			$delta_search = 0.5;
 			foreach ($Crisis as $crisis) {
 					
-				if (abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ) < 1
-				 && abs($crisis['Crisis']['centrey'] - $this->request->data['Crisis']['centrey'] ) < 1
+				if (abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ) < $delta_search
+				 && abs($crisis['Crisis']['centrey'] - $this->request->data['Crisis']['centrey'] ) < $delta_search
 				 && $crisis['Crisis']['type'] == $this->request->data['Crisis']['type'] ) {   //1° lat/long-> 111 km 
-					debug(abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ));
+					
 
-						//$_crise = $crisis['Crisis'];
+						$_crise = $crisis['Crisis'];
 
 						$this->Crisis->id = $_crise['id']; 
 						///***** UPDATE DE LA CRISE AVEC NOUVELLES COORDONNEES
 						//calcul nouveau centre
-						//$this->Crisis->saveField('centrex',
-						//	);
-
+						$this->Crisis->saveField('centrex',
+							($_crise['centrex'] * $_crise['nbpings'] + $this->request->data['Crisis']['centrex']) / ($_crise['nbpings'] + 1));
+						$this->Crisis->saveField('centrey',
+							($_crise['centrey'] * $_crise['nbpings'] + $this->request->data['Crisis']['centrey']) / ($_crise['nbpings'] + 1));
 						//calcul nouveau rayon
 
+						$new_rayon = $this->measure($_crise['centrex'], $_crise['centrey'], $this->request->data['Crisis']['centrex'], $this->request->data['Crisis']['centrey']);
+						
+						$this->Crisis->saveField('rayon', $new_rayon + 10000); // 10000 = marge
+						
 
 						$this->Crisis->id = $crisis['Crisis']['id'];
 						$this->Crisis->saveField("nbpings", $crisis['Crisis']['nbpings']+1);
 						$this->Session->setFlash('Crisis Reported');
-						return $this->redirect(array("controller" => "news", "action" => "index"));
+						return ;//$this->redirect(array("controller" => "news", "action" => "index"));
 					}
 
 					
@@ -159,6 +177,7 @@ class CrisesController extends AppController {
 		$this->Crisis->saveField("centrex", $this->request->data['Crisis']['centrex']);
 		$this->Crisis->saveField("centrey", $this->request->data['Crisis']['centrey']);
 		$this->Crisis->saveField("nbpings", 1);
+		$this->Crisis->saveField('rayon', 10000); // 10 KM
 		$this->Session->setFlash('Crisis created');
 		return $this->redirect(array("controller" => "news", "action" => "index"));
 
