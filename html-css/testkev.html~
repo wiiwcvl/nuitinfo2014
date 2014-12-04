@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Crisis details</title>
+		<link href="cris_style.css" rel='stylesheet'/>
+		<!--bootstrap-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	</head>
+		
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-danger btn-lg bigbutton"> SIGNAL A CRISIS </button>
+				</div>
+				<div class="col-sm-9">
+					<div id="newsCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>   
+
+						<div class="carousel-inner">
+							<div class="item active">
+								TEST1
+								<br>
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="item">
+								TEST2
+								<br>
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="item">
+								TESTICULE
+								<br>
+								<br>
+								<br>
+								<br>
+							</div>
+						</div>
+
+						<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</a>
+						<a class="carousel-control right" href="#myCarousel" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--bootstrap-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	</body>
+</html>
+
+
