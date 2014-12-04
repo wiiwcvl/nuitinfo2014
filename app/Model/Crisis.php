@@ -109,7 +109,7 @@ class Crisis extends AppModel {
 		'Acteur' => array(
 			'className' => 'Acteur',
 			'joinTable' => 'acteurs_crises',
-			'foreignKey' => 'crisis_id',
+			'foreignKey' => 'crise_id',
 			'associationForeignKey' => 'acteur_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',

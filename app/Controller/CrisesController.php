@@ -109,4 +109,64 @@ class CrisesController extends AppController {
 		$this->Session->setFlash(__('Crisis was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
 	}
+
+/**
+ * signal method
+ *
+ * @throws NotFoundException
+ * @throws MethodNotAllowedException
+ * @param string $id
+ * @return void
+ */
+	public function signal() {
+		$types = $this->Crisis->Typecrise->find("list",array("fields" => "intitule"));
+		debug($types);
+		$this->set("types",$types);
+		if ($this->request->is('post')) {
+			if($this->request->data['Crisis']['centrex'] == 0 || $this->request->data['Crisis']['centrey'] == 0)
+				return;
+
+			$Crisis = $this->Crisis->find("all");
+			debug($Crisis);
+			foreach ($Crisis as $crisis) {
+					
+				if (abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ) < 1
+				 && abs($crisis['Crisis']['centrey'] - $this->request->data['Crisis']['centrey'] ) < 1
+				 && $crisis['Crisis']['type'] == $this->request->data['Crisis']['type'] ) {   //1° lat/long-> 111 km 
+					debug(abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ));
+
+						$this->Crisis->id = $crisis['Crisis']['id']; 
+						///***** UPDATE DE LA CRISE AVEC NOUVELLES COORDONNEES
+						//calcul nouveau centre
+						debug($this->Crisis->data);
+
+						//calcul nouveau rayon
+
+
+						$this->Crisis->id = $crisis['Crisis']['id'];
+						$this->Crisis->saveField("nbpings", $crisis['Crisis']['nbpings']+1);
+						$this->Session->setFlash('Crisis Reported');
+						return $this->redirect(array("controller" => "news", "action" => "index"));
+					}
+
+					
+				}	
+		$this->Crisis->create();
+		$this->Crisis->saveField("type", $this->request->data['Crisis']['type']);
+		$this->Crisis->saveField("centrex", $this->request->data['Crisis']['centrex']);
+		$this->Crisis->saveField("centrey", $this->request->data['Crisis']['centrey']);
+		$this->Crisis->saveField("nbpings", 1);
+		$this->Session->setFlash('Crisis created');
+		return $this->redirect(array("controller" => "news", "action" => "index"));
+
+
+		}
+
+
+
+
+	}
+
 }
+
+
