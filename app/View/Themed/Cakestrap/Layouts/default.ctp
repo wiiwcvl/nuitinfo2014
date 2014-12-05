@@ -35,6 +35,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			// Uncomment this to enable the bootstrap gradient theme (Flat is way better though).
 			//echo $this->Html->css('bootstrap-theme.min');
 			echo $this->Html->css('core');
+			echo $this->Html->css('style');
 
 			echo $this->fetch('css');
 			
@@ -52,9 +53,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<div id="header" class="container">
 				<?php echo $this->element('menu/nav_bar'); ?>
 			</div><!-- /#header .container -->
-			
-			<div id="content" class="container">
+			<div class="flash">
 				<?php echo $this->Session->flash(); ?>
+			</div>
+			<div id="content" class="container">
 				<?php echo $this->fetch('content'); ?>
 			</div><!-- /#header .container -->
 			

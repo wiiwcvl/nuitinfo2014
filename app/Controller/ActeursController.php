@@ -49,11 +49,13 @@ class ActeursController extends AppController {
 
 	public function login() {
 		if ($this->request->is('post')) {
-			echo "<pre>".print_r($this->request->data,true)."</pre>";
 			if ($this->Auth->login($this->request->data)) {
+				$this->Session->setFlash('Login ok !');
 				return $this->redirect($this->Auth->redirectUrl());
 			}
-			$this->Session->setFlash(__('Invalid username or password, try again'));
+			else{
+				$this->Session->setFlash('Invalid username or password, try again');
+			}
 		}
 	}
 
