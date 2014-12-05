@@ -9,7 +9,7 @@
 						<div class="panel panel-danger">
 							<div class="panel-heading">
 								<h3 class="panel-title">
-									<b>Name: </b><?php echo $crisis['Crisis']['nom'] ?> &nbsp &nbsp &nbsp &nbsp &nbsp <b>Severity: level <?php echo $crisis['Crisis']['gravite'] ?>&nbsp</b>
+									<b>Severity: level <?php echo $crisis['Crisis']['gravite'] ?>&nbsp</b>
 								</h3>
 							</div>
 							<div class="panel-body">
