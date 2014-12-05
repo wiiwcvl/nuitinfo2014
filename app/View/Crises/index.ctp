@@ -1,82 +1,161 @@
+<script type="text/javascript">
+	var crises = new Array();
+<?php
+	$i = 0;
+
+	foreach($crises as $crisis) {
+		echo "\tcrises[$i] = new Array();\n";
+		echo "\tcrises[$i]['gravite'] = " .$crisis['Crisis']['gravite']. ";\n";
+		echo "\tcrises[$i]['verifie'] = " .$crisis['Crisis']['verifie']. ";\n";
+		echo "\tcrises[$i]['centrex'] = " .$crisis['Crisis']['centrex']. ";\n";
+		echo "\tcrises[$i]['centrey'] = " .$crisis['Crisis']['centrey']. ";\n";
+		echo "\tcrises[$i]['rayon'] = " .$crisis['Crisis']['rayon']. ";\n";
+		echo "\tcrises[$i]['nbpings'] = " .$crisis['Crisis']['nbpings']. ";\n";
+		echo "\tcrises[$i]['status'] = " .$crisis['Crisis']['status']. ";\n";
+		echo "\tcrises[$i]['type'] = " .$crisis['Typecrise']['intitule']. ";\n";
+		$i++;
+	}
+?>
+</script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	var map;
+	var markersArray = [];
+	var infos = [];
+
+	var mapOptions = {
+		zoom: 0,
+		center: new google.maps.LatLng(),
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		panControl: false,
+		mapTypeControl: false,
+		panControlOptions: {
+			position: google.maps.ControlPosition.RIGHT_CENTER
+		},
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE,
+			position: google.maps.ControlPosition.RIGHT_CENTER
+		},
+		scaleControl: false,
+		streetViewControl: false,
+		streetViewControlOptions: {
+			position: google.maps.ControlPosition.RIGHT_CENTER
+		}
+	};
+
+	var roadAtlasStyles = [{
+		"featureType": "road.highway",
+		"elementType": "geometry",
+		"stylers": [
+			{ "saturation": -100 },
+			{ "lightness": -8 },
+			{ "gamma": 1.18 }
+		]},
+	{
+		"featureType": "road.arterial",
+		"elementType": "geometry",
+		"stylers": [
+			{ "saturation": -100 },
+			{ "gamma": 1 },
+			{ "lightness": -24 }
+		]},
+	{
+		"featureType": "poi",
+		"elementType": "geometry",
+		"stylers": [
+			{ "saturation": -100 }
+		]},
+	{
+		"featureType": "administrative",
+		"stylers": [
+			{ "saturation": -100 }
+		]},
+	{
+		"featureType": "transit",
+		"stylers": [
+			{ "saturation": -100 }
+		]},
+	{
+		"featureType": "water",
+		"elementType": "geometry.fill",
+		"stylers": [
+			{ "saturation": -70 }
+		]},
+	{
+		"featureType": "road",
+		"stylers": [
+			{ "saturation": -100 }
+		]},
+	{
+		"featureType": "administrative",
+		"stylers": [
+			{ "saturation": -100 }
+		]},
+	{
+		"featureType": "landscape",
+		"stylers": [
+			{ "saturation": -100 }
+		]},
+	{
+		"featureType": "poi",
+		"stylers": [
+			{ "saturation": -100 }]
+	}];
+
+	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+	//var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(16.0989,16.6687),new google.maps.LatLng(18,18));
+	var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(0,-120),new google.maps.LatLng(0,120)); // Global view
+	map.fitBounds(bounds);
+
+	for (var i = 0; i < crises.length; i++) {
+		var lat = new google.maps.LatLng(crises[i]['centrey'], crises[i]['centrex']);
+		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status'];
+		var marker = new google.maps.Marker({
+			map: map,
+			position: lat,
+			content: content
+		});
+		var radius = crises[i]['rayon'];
+		var circleOpts ={
+			map: map,
+			center: lat,
+			radius: radius
+		}
+		var circle = new google.maps.Circle(circleOpts);
+
+		markersArray.push(marker);
+		google.maps.event.addListener(marker, 'click', function () {
+			closeInfos();
+			var info = new google.maps.InfoWindow({content: this.content});
+			info.open(map,this);
+			infos[0]=info;
+		});
+	}
+
+	var styledMapType = new google.maps.StyledMapType(roadAtlasStyles, mapOptions);
+
+	map.mapTypes.set('styledMap', styledMapType);
+	map.setMapTypeId('styledMap');
+
+	function closeInfos() {
+		if(infos.length > 0) {
+			infos[0].set("marker",null);
+			infos[0].close();
+			infos.length = 0;
+		}
+	}
+
+	$("#map_canvas").height(0.75 * $("#map_canvas").width());
+	$(window).resize(function() {
+		$("#map_canvas").height(0.75 * $("#map_canvas").width());
+		map.fitBounds(bounds);
+	});
+});
+		</script>
 
 <div id="page-container" class="row">
-
-	<div id="sidebar" class="col-sm-3">
-		
-		<div class="actions">
-		
-			<ul class="list-group">
-				<li class="list-group-item"><?php echo $this->Html->link(__('New Crisis'), array('action' => 'add'), array('class' => '')); ?></li>						<li class="list-group-item"><?php echo $this->Html->link(__('List Acteurs'), array('controller' => 'acteurs', 'action' => 'index'), array('class' => '')); ?></li> 
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Acteur'), array('controller' => 'acteurs', 'action' => 'add'), array('class' => '')); ?></li> 
-			</ul><!-- /.list-group -->
-			
-		</div><!-- /.actions -->
-		
-	</div><!-- /#sidebar .col-sm-3 -->
-	
-	<div id="page-content" class="col-sm-9">
-
-		<div class="crises index">
-		
-			<h2><?php echo __('Crises'); ?></h2>
-			
-			<div class="table-responsive">
-				<table cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
-					<thead>
-						<tr>
-															<th><?php echo $this->Paginator->sort('id'); ?></th>
-															<th><?php echo $this->Paginator->sort('type'); ?></th>
-															<th><?php echo $this->Paginator->sort('gravite'); ?></th>
-															<th><?php echo $this->Paginator->sort('verifie'); ?></th>
-															<th><?php echo $this->Paginator->sort('centrex'); ?></th>
-															<th><?php echo $this->Paginator->sort('centrey'); ?></th>
-															<th><?php echo $this->Paginator->sort('rayon'); ?></th>
-															<th><?php echo $this->Paginator->sort('nbpings'); ?></th>
-															<th><?php echo $this->Paginator->sort('status'); ?></th>
-															<th class="actions"><?php echo __('Actions'); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						foreach ($crises as $crisis): ?>
-	<tr>
-		<td><?php echo h($crisis['Crisis']['id']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['type']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['gravite']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['verifie']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['centrex']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['centrey']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['rayon']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['nbpings']); ?>&nbsp;</td>
-		<td><?php echo h($crisis['Crisis']['status']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $crisis['Crisis']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $crisis['Crisis']['id']), array('class' => 'btn btn-default btn-xs')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $crisis['Crisis']['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $crisis['Crisis']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-					</tbody>
-				</table>
-			</div><!-- /.table-responsive -->
-			
-			<p><small>
-				<?php
-				echo $this->Paginator->counter(array(
-				'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-				));
-				?>			</small></p>
-
-			<ul class="pagination">
-				<?php
-		echo $this->Paginator->prev('< ' . __('Previous'), array('tag' => 'li'), null, array('class' => 'disabled', 'tag' => 'li', 'disabledTag' => 'a'));
-		echo $this->Paginator->numbers(array('separator' => '', 'currentTag' => 'a', 'tag' => 'li', 'currentClass' => 'disabled'));
-		echo $this->Paginator->next(__('Next') . ' >', array('tag' => 'li'), null, array('class' => 'disabled', 'tag' => 'li', 'disabledTag' => 'a'));
-	?>
-			</ul><!-- /.pagination -->
-			
-		</div><!-- /.index -->
-	
-	</div><!-- /#page-content .col-sm-9 -->
-
-</div><!-- /#page-container .row-fluid -->
+	<div id="map_canvas" style="width: 100%;"></div>
+</div>
