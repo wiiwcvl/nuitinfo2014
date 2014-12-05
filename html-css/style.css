@@ -44,7 +44,31 @@ p{
 .bigbutton{
     font-size : 50px !important;
 }
- .big_button{
+.big_button{
 	
     font-size : 4em !important;
 }
+
+.greenbutton{
+	background-color : #00CC00 !important;
+}
+.redbutton{
+    background-color : #D00000  !important;
+}
+.yellowbutton{
+    background-color : #FFCC00 !important;
+}
+.orangebutton{
+    background-color : #FF6600 !important;
+}
+
+
+.jumbotron {
+     background-color: #FFFFFF !important;
+}
+
+.jumbotron h2,
+.jumbotron .h2 {
+     color: #428bca;
+}
+

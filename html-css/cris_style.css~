@@ -21,7 +21,3 @@ p{
   float: right;
 }
 
-.div_vcenter {
-  position: relative;
-  transform: translateY(50%);
-}
