@@ -22,7 +22,7 @@ class CrisesController extends AppController {
  */
 	public function index() {
 		$this->Crisis->recursive = 0;
-		$this->set('crises', $this->paginate());
+		$this->set('crises', $this->Crisis->find('all'));
 	}
 
 /**
