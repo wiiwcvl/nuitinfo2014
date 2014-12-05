@@ -11,31 +11,29 @@
       <!-- Stylesheet perso CSS -->
       <link rel="stylesheet" href="style.css"/>
       <title>Presentation</title> 
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+		  $("#navbar_ext").load("navbar.html"); 
+		});
+	</script> 
+
     </head>
 		
 
 
 	<body>
 
-      <!-- navbar TODO:liens vers pages -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                          <a class="navbar-brand" href="index.html">Home</a>
-                        </div>
-        <div>
-                         <ul class="nav navbar-nav">
-                                <li><a href="#">World view</a></li>
-                                <li><a href="news.html">Local News</a></li>
-                     </ul>
-                         <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                         </ul>
-        </div>
-        </div>
-      </nav>
+	<!-- navbar externe-->
 
-<article><h2>[Organisation name]</h2>
+     <div id="navbar_ext"></div>
+
+<div style="margin-top: 60px">
+
+<h2>[Organisation name]</h2>
 <h3>[organisation type]</h3>
 <p>completed by org</p>
 <h3>[contact]</h3>
@@ -43,6 +41,7 @@
 <h3>[description]</h3>
 <p>completed by org</p>
 
+</div>
 
 
   <!-- Add jQuery -->
