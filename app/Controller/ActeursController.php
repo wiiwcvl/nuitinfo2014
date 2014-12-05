@@ -8,30 +8,46 @@ App::uses('AppController', 'Controller');
  */
 class ActeursController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator');
-
-/**
- * index method
- *
- * @return void
- */
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
 	public function index() {
 		$this->Acteur->recursive = 0;
 		$this->set('acteurs', $this->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+	public $components = array(
+		'Paginator',
+	);
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		// Allow users to register and logout.
+		$this->Auth->allow('add', 'logout');
+	}
+
+	public function login() {
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Session->setFlash(__('Invalid username or password, try again'));
+		}
+	}
+
+	public function logout() {
+		return $this->redirect($this->Auth->logout());
+	}
+
+	/**
+	 * view method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
 	public function view($id = null) {
 		if (!$this->Acteur->exists($id)) {
 			throw new NotFoundException(__('Invalid acteur'));
@@ -40,11 +56,11 @@ class ActeursController extends AppController {
 		$this->set('acteur', $this->Acteur->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
+	/**
+	 * add method
+	 *
+	 * @return void
+	 */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Acteur->create();
@@ -59,15 +75,15 @@ class ActeursController extends AppController {
 		$this->set(compact('crises'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+	/**
+	 * edit method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
 	public function edit($id = null) {
-        $this->Acteur->id = $id;
+		$this->Acteur->id = $id;
 		if (!$this->Acteur->exists($id)) {
 			throw new NotFoundException(__('Invalid acteur'));
 		}
@@ -86,14 +102,14 @@ class ActeursController extends AppController {
 		$this->set(compact('crises'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @throws MethodNotAllowedException
+	 * @param string $id
+	 * @return void
+	 */
 	public function delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();

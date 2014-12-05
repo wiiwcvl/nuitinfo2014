@@ -54,9 +54,6 @@
 		<?php echo $this->Form->input('presentation', array('class' => 'form-control')); ?>
 </div><!-- .form-group -->
 
-		<?php echo $this->Form->input('Crisis');?>
-				</fieldset>
-			<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
 <?php echo $this->Form->end(); ?>
 			
 		</div><!-- /.form -->

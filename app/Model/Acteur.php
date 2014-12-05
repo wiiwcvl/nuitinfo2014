@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 /**
  * Acteur Model
  *
@@ -8,11 +9,20 @@ App::uses('AppModel', 'Model');
  */
 class Acteur extends AppModel {
 
-/**
- * Validation rules
- *
- * @var array
- */
+	public function beforeSave($options = array()) {
+		if (isset($this->data[$this->alias]['pass'])) {
+			$passwordHasher = new BlowfishPasswordHasher();
+			$this->data[$this->alias]['pass'] = $passwordHasher->hash(
+				$this->data[$this->alias]['pass']
+			);
+		}
+		return true;
+	}
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
 		'login' => array(
 			'notEmpty' => array(
@@ -68,11 +78,11 @@ class Acteur extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * hasMany associations
- *
- * @var array
- */
+	/**
+	 * hasMany associations
+	 *
+	 * @var array
+	 */
 	public $hasMany = array(
 		'News' => array(
 			'className' => 'News',
@@ -90,11 +100,11 @@ class Acteur extends AppModel {
 	);
 
 
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
+	/**
+	 * hasAndBelongsToMany associations
+	 *
+	 * @var array
+	 */
 	public $hasAndBelongsToMany = array(
 		'Crisis' => array(
 			'className' => 'Crisis',
