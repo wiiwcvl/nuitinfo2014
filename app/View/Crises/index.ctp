@@ -11,8 +11,8 @@
 		echo "\tcrises[$i]['centrey'] = " .$crisis['Crisis']['centrey']. ";\n";
 		echo "\tcrises[$i]['rayon'] = " .$crisis['Crisis']['rayon']. ";\n";
 		echo "\tcrises[$i]['nbpings'] = " .$crisis['Crisis']['nbpings']. ";\n";
-		echo "\tcrises[$i]['status'] = " .$crisis['Crisis']['status']. ";\n";
-		echo "\tcrises[$i]['type'] = " .$crisis['Typecrise']['intitule']. ";\n";
+		echo "\tcrises[$i]['status'] = \"" .$crisis['Crisis']['status']. "\";\n";
+		echo "\tcrises[$i]['type'] = \"" .$crisis['Typecrise']['intitule']. "\";\n";
 		$i++;
 	}
 ?>
