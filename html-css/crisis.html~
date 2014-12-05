@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Crisis details</title>
-		<link href="cris_style.css" rel='stylesheet'/>
+		<link href="style.css" rel='stylesheet'/>
 		<!--bootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -47,6 +47,19 @@
 									<b>Actors:</b>
 									[acteurs impliqués]
 								</p>
+							</div>
+						</div>
+
+						<!-- afficher uniquement si connecté -->
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Contribute</b>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-asterisk"></span> Ping this crisis</button>
+								&nbsp
 							</div>
 						</div>
 						<div class="panel panel-danger">
