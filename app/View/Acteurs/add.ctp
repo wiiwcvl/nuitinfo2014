@@ -22,7 +22,7 @@
 
 		<?php echo $this->Form->label('mail', 'Email', array('class' => "control-label"));?>
 		<div class="controls">
-		<?php echo $this->Form->input('mail', array('class' => 'form-control', 'type' => 'mail')); ?>
+		<?php echo $this->Form->input('mail', array('class' => 'form-control', 'type' => 'email')); ?>
 		</div>
 
 		<?php echo $this->Form->label('password', 'Password', array('class' => "control-label"));?>

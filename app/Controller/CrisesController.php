@@ -43,6 +43,7 @@ class CrisesController extends AppController {
 			throw new NotFoundException(__('Invalid crisis'));
 		}
 		$options = array('conditions' => array('Crisis.' . $this->Crisis->primaryKey => $id));
+		$this->set('logged_actor', $this->Auth->user()['Acteur']['username']);
 		$this->set('crisis', $this->Crisis->find('first', $options));
 	}
 
