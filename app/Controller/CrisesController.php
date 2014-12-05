@@ -67,6 +67,9 @@ class CrisesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$types = $this->Crisis->Typecrise->find("list",array("fields" => "intitule"));
+		$this->set("types",$types);
+		
         $this->Crisis->id = $id;
 		if (!$this->Crisis->exists($id)) {
 			throw new NotFoundException(__('Invalid crisis'));

@@ -20,58 +20,48 @@
 
 		<div class="crises form">
 		
-			<?php echo $this->Form->create('Crisis', array('inputDefaults' => array('label' => false), 'role' => 'form')); ?>
+			<?php echo $this->Form->create('Crisis', array('inputDefaults' => array('label' => false), 'role' => 'form', 'class' => 'form-horizontal')); ?>
 				<fieldset>
 					<h2><?php echo __('Edit Crisis'); ?></h2>
 			<div class="form-group">
-	<?php echo $this->Form->label('id', 'id');?>
-		<?php echo $this->Form->input('id', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+				<?php echo $this->Form->input('id', array('class' => 'form-control')); ?>
+			</div><!-- .form-group -->
 
-<div class="form-group">
-	<?php echo $this->Form->label('type', 'type');?>
-		<?php echo $this->Form->input('type', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+	<div class="form-group" style="margin-top: 100px; margin-right: 5px;">
+        <?php echo $this->Form->label('name', 'Crisis Name', array('class' => "col-sm-2 control-label"));?>
+        <div class="col-sm-4">
+        	<?php echo $this->Form->input('name', array('class' => 'form-control')) ?>
+        </div>
+      </div>
+      
+      <div class="form-group" style="margin-right: 5px;">
+      	<?php echo $this->Form->label('description', 'Description', array('class' => "col-sm-2 control-label"));?>
+          <div class="col-sm-4">
+          	<?php echo $this->Form->input('description', array('class' => 'form-control')) ?>
+            </textarea>
+          </div>
+    </div>
 
-<div class="form-group">
-	<?php echo $this->Form->label('gravite', 'gravite');?>
-		<?php echo $this->Form->input('gravite', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+    <div class="form-group" style="margin-right: 5px;">
+      	<?php echo $this->Form->label('gravite', 'Severity level', array('class' => "col-sm-2 control-label"));?>
+          <div class="col-sm-4">
+          	<?php echo $this->Form->input('gravite', array('class' => 'form-control')) ?>
+            </textarea>
+          </div>
+    </div>
 
-<div class="form-group">
-	<?php echo $this->Form->label('verifie', 'verifie');?>
-		<?php echo $this->Form->input('verifie', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-<div class="form-group">
-	<?php echo $this->Form->label('centrex', 'centrex');?>
-		<?php echo $this->Form->input('centrex', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-<div class="form-group">
-	<?php echo $this->Form->label('centrey', 'centrey');?>
-		<?php echo $this->Form->input('centrey', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-<div class="form-group">
-	<?php echo $this->Form->label('rayon', 'rayon');?>
-		<?php echo $this->Form->input('rayon', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-<div class="form-group">
-	<?php echo $this->Form->label('nbpings', 'nbpings');?>
-		<?php echo $this->Form->input('nbpings', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-<div class="form-group">
-	<?php echo $this->Form->label('status', 'status');?>
-		<?php echo $this->Form->input('status', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-		<?php echo $this->Form->input('Acteur');?>
+    <div class="form-group" style="margin-right: 5px;">
+      	<?php echo $this->Form->label('status', 'Status', array('class' => "col-sm-2 control-label"));?>
+          <div class="col-sm-4">
+          	<?php echo $this->Form->input('status', array('class' => 'form-control')) ?>
+            </textarea>
+          </div>
+    </div>
 				</fieldset>
+			
 			<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
-<?php echo $this->Form->end(); ?>
+
+		<?php echo $this->Form->end(); ?>
 			
 		</div><!-- /.form -->
 			
