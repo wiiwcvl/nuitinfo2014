@@ -1,62 +1,57 @@
-
 <div id="page-container" class="row">
-
-	<div id="sidebar" class="col-sm-3">
-		
-		<div class="actions">
-		
-			<ul class="list-group">
-										<li class="list-group-item"><?php echo $this->Html->link(__('List Acteurs'), array('action' => 'index')); ?></li>
-						<li class="list-group-item"><?php echo $this->Html->link(__('List News'), array('controller' => 'news', 'action' => 'index')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New News'), array('controller' => 'news', 'action' => 'add')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Crises'), array('controller' => 'crises', 'action' => 'index')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Crisis'), array('controller' => 'crises', 'action' => 'add')); ?> </li>
-			</ul><!-- /.list-group -->
-		
-		</div><!-- /.actions -->
-		
-	</div><!-- /#sidebar .col-sm-3 -->
 	
-	<div id="page-content" class="col-sm-9">
+	<div id="page-content" class="text-center jumbotron">
+
+		<div class="text-center jumbotron">
+  		<h2>Signing up</h2>
+  		<p>If you belong to a humanitarian association, a NGO, a local, national or international organization you can register yourself by completing the fields below.</p>
+		</div>
 
 		<div class="acteurs form">
 		
-			<?php echo $this->Form->create('Acteur', array('inputDefaults' => array('label' => false), 'role' => 'form')); ?>
+			<?php echo $this->Form->create('Acteur', array('inputDefaults' => array('label' => false), 'role' => 'form', 
+			"class" => "well form-horizontal")); ?>
 				<fieldset>
 					<h2><?php echo __('Add Acteur'); ?></h2>
-			<div class="form-group">
-	<?php echo $this->Form->label('username', 'username');?>
+
+	<div class="text-center control-group">
+		<?php echo $this->Form->label('username', 'Login', array('class' => "control-label"));?>
+		<div class="controls">
 		<?php echo $this->Form->input('username', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+		</div>
 
-<div class="form-group">
-	<?php echo $this->Form->label('password', 'password');?>
-		<?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+		<?php echo $this->Form->label('mail', 'Email', array('class' => "control-label"));?>
+		<div class="controls">
+		<?php echo $this->Form->input('mail', array('class' => 'form-control', 'type' => 'mail')); ?>
+		</div>
 
-<div class="form-group">
-	<?php echo $this->Form->label('nom', 'nom');?>
+		<?php echo $this->Form->label('password', 'Password', array('class' => "control-label"));?>
+		<div class="controls">
+		<?php echo $this->Form->input('password', array('class' => 'form-control', 'type' => 'password')); ?>
+		</div>
+
+		<?php echo $this->Form->label('nom', 'Organization name', array('class' => "control-label"));?>
+		<div class="controls">
 		<?php echo $this->Form->input('nom', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+		</div>
 
-<div class="form-group">
-	<?php echo $this->Form->label('type', 'type');?>
-		<?php echo $this->Form->input('type', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+		<?php echo $this->Form->label('type', 'Organization type', array('class' => "control-label"));?>
+		<div class="controls">
+		<?php echo $this->Form->input('type', array('class' => 'form-control', 'type' => 'select', 
+		'options' => array(1 => "NGO",2 => "Local public institution", 3 => "National public institution",
+		4 => "International public institution", 5 => "Other"))); ?>
+		</div>
 
-<div class="form-group">
-	<?php echo $this->Form->label('mail', 'mail');?>
-		<?php echo $this->Form->input('mail', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
-
-<div class="form-group">
-	<?php echo $this->Form->label('presentation', 'presentation');?>
+		<?php echo $this->Form->label('presentation', 'Describe your organization', array('class' => "control-label"));?>
+		<div class="controls">
 		<?php echo $this->Form->input('presentation', array('class' => 'form-control')); ?>
-</div><!-- .form-group -->
+		</div>
 
 				</fieldset>
 			<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
-<?php echo $this->Form->end(); ?>
+			<?php echo $this->Form->end(); ?>
+
+		</div><!-- .form-group -->
 			
 		</div><!-- /.form -->
 			

@@ -105,7 +105,7 @@ class ActeursController extends AppController {
 			$options = array('conditions' => array('Acteur.' . $this->Acteur->primaryKey => $id));
 			$this->request->data = $this->Acteur->find('first', $options);
 		}
-		$crises = $this->Acteur->Crisi->find('list');
+		$crises = $this->Acteur->Crisis->find('list');
 		$this->set(compact('crises'));
 	}
 

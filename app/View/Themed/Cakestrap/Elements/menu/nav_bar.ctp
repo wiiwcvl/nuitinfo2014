@@ -14,6 +14,7 @@
 				<li><?php echo $this->Html->link("World view",array('controller'=>'crises','action'=>'index')); ?></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li><?php echo $this->Html->link("Our team",array('controller'=>'pages','action'=>'team')); ?></li>
 			<?php
 $user = $this->Session->read('Auth'); 
 				if(isset($user['User'])){ ?>

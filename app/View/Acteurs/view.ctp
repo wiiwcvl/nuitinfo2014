@@ -23,51 +23,20 @@
 	
 	<div id="page-content" class="col-sm-9">
 		
-		<div class="acteurs view">
-
-			<h2><?php  echo __('Acteur'); ?></h2>
+		<div class="acteurs view panel panel-primary" style="margin-top: 60px;">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong><?php  echo h($acteur['Acteur']['nom']); ?></strong></h3>
+			</div>
 			
-			<div class="table-responsive">
-				<table class="table table-striped table-bordered">
-					<tbody>
-						<tr>		<td><strong><?php echo __('Id'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['id']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Username'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['username']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Password'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['password']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Nom'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['nom']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Type'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['type']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Mail'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['mail']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Presentation'); ?></strong></td>
-		<td>
-			<?php echo h($acteur['Acteur']['presentation']); ?>
-			&nbsp;
-		</td>
-</tr>					</tbody>
-				</table><!-- /.table table-striped table-bordered -->
-			</div><!-- /.table-responsive -->
+
+			<div class="panel-body">
+				<h3>[organisation type]</h3>
+				<p><?php echo h($acteur['Acteur']['type']); ?></p>
+				<h3>[contact]</h3>
+				<p><?php echo h($acteur['Acteur']['mail']); ?></p>
+				<h3>[description]</h3>
+				<p><?php echo h($acteur['Acteur']['presentation']); ?></p>
+			</div>
 			
 		</div><!-- /.view -->
 
