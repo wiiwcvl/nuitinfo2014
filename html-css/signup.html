@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="signup.css">
+		<title>Inscription</title>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+		  $("#navbar_ext").load("navbar.html"); 
+		});
+	</script> 
+
+	</head>
+
+
+
+ 	<body class="container-fluid">
+
+	<!-- navbar externe-->
+
+   	<div id="navbar_ext"></div>
+
+
+		<div class="text-center jumbotron">
+  		<h2>Inscription</h2>
+  		<p>If you belong to a humanitarian association, a NGO, a local, national or international organization you can register yourself by completing the fields below.</p>
+		</div>		
+
+
+		<form class="well form-horizontal">
+
+		<div class="text-center control-group">
+		<label class="control-label" for="pseudo">User name</label>
+		<div class="controls">
+		<input type="text" id="pseudo" name="pseudo" placeholder="User name"> <br/> <br/>
+
+		<label class="control-label" for="email">Email</label>
+		<div class="controls">
+		<input type="email" id="email" name="Email" placeholder="Email"><br/> <br/>
+
+		<label class="control-label" for="password">Password</label>
+		<div class="controls">
+		<input type="text" id="password" name="password" placeholder="Password"><br/> <br/>
+
+		
+		<label class="control-label" for="password">Confirm your password</label>
+		<div class="controls">
+		<input type="text" id="password" name="password" placeholder="Password"><br/> <br/>
+
+		<label class="control-label" for="organization name">Organization name</label>
+		<div class="controls">
+		<input type="text" id="organization name" name="organization name" placeholder="Organization name"><br/> <br/>
+
+		</div>
+		</div>
+	
+		<div class="control-group">
+		<label class="control-label">Organization type</label>
+		<div class="controls">
+		<select id="organization type">
+		<option value="1">NGO</option>
+		<option value="2">Local public institution</option>
+		<option value="3">National public institution</option>
+		<option value="4">International public institution</option>
+		<option value="5">Other</option>
+		</select>
+		</div>
+		</div>
+		<br/>
+
+		<div class="control-group">
+		<label class="control-label" for="Add a commentary">Describe your organization</label>
+		<div class="controls">
+		<textarea rows="4" name="commentary" id="commentary"></textarea>
+		</div>
+		</div>
+		<br/>
+
+		<div class="form-actions">
+		<button type="submit" class="btn btn-info">Submit</button>
+		</div>
+
+		</form>		
+
+    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  	</body>
+
+</html>
+
+
