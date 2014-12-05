@@ -4,7 +4,7 @@
 
 		<div class="text-center jumbotron">
   		<h2>Signing up</h2>
-  		<p>If you belong to a humanitarian association, a NGO, a local, national or international organization you can register yourself by completing the fields below.</p>
+  		<p>If you belong to a humanitarian association, an NGO, a local, national or international organization you can register yourself by completing the fields below.</p>
 		</div>
 
 		<div class="acteurs form">
@@ -12,7 +12,7 @@
 			<?php echo $this->Form->create('Acteur', array('inputDefaults' => array('label' => false), 'role' => 'form', 
 			"class" => "well form-horizontal")); ?>
 				<fieldset>
-					<h2><?php echo __('Add Acteur'); ?></h2>
+					
 
 	<div class="text-center control-group">
 		<?php echo $this->Form->label('username', 'Login', array('class' => "control-label"));?>
@@ -22,7 +22,7 @@
 
 		<?php echo $this->Form->label('mail', 'Email', array('class' => "control-label"));?>
 		<div class="controls">
-		<?php echo $this->Form->input('mail', array('class' => 'form-control', 'type' => 'mail')); ?>
+		<?php echo $this->Form->input('mail', array('class' => 'form-control', 'type' => 'email')); ?>
 		</div>
 
 		<?php echo $this->Form->label('password', 'Password', array('class' => "control-label"));?>

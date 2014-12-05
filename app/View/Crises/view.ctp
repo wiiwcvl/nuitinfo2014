@@ -1,135 +1,86 @@
 
 <div id="page-container" class="row">
-
-	<div id="sidebar" class="col-sm-3">
-		
-		<div class="actions">
-			
-			<ul class="list-group">			
-						<li class="list-group-item"><?php echo $this->Html->link(__('Edit Crisis'), array('action' => 'edit', $crisis['Crisis']['id']), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete Crisis'), array('action' => 'delete', $crisis['Crisis']['id']), array('class' => ''), __('Are you sure you want to delete # %s?', $crisis['Crisis']['id'])); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Crises'), array('action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Crisis'), array('action' => 'add'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Acteurs'), array('controller' => 'acteurs', 'action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Acteur'), array('controller' => 'acteurs', 'action' => 'add'), array('class' => '')); ?> </li>
-				
-			</ul><!-- /.list-group -->
-			
-		</div><!-- /.actions -->
-		
-	</div><!-- /#sidebar .span3 -->
 	
 	<div id="page-content" class="col-sm-9">
-		
-		<div class="crises view">
 
-			<h2><?php  echo __('Crisis'); ?></h2>
-			
-			<div class="table-responsive">
-				<table class="table table-striped table-bordered">
-					<tbody>
-						<tr>		<td><strong><?php echo __('Id'); ?></strong></td>
-		<td>
-			<?php echo $crisis['Crisis']['id']; ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Type'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['type']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Gravite'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['gravite']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Verifie'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['verifie']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Centrex'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['centrex']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Centrey'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['centrey']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Rayon'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['rayon']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Nbpings'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['nbpings']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Status'); ?></strong></td>
-		<td>
-			<?php echo h($crisis['Crisis']['status']); ?>
-			&nbsp;
-		</td>
-</tr>					</tbody>
-				</table><!-- /.table table-striped table-bordered -->
-			</div><!-- /.table-responsive -->
-			
-		</div><!-- /.view -->
-
-					
-			<div class="related">
-
-				<h3><?php echo __('Related Acteurs'); ?></h3>
-				
-				<?php if (!empty($crisis['Acteur'])): ?>
-					
-					<div class="table-responsive">
-						<table class="table table-striped table-bordered">
-							<thead>
-								<tr>
-											<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Login'); ?></th>
-		<th><?php echo __('Pass'); ?></th>
-		<th><?php echo __('Nom'); ?></th>
-		<th><?php echo __('Type'); ?></th>
-		<th><?php echo __('Mail'); ?></th>
-		<th><?php echo __('Presentation'); ?></th>
-									<th class="actions"><?php echo __('Actions'); ?></th>
-								</tr>
-							</thead>
-							<tbody>
+		<div class="container-fluid" style="margin-top: 60px">
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Name: </b><?php echo $crisis['Crisis']['nom'] ?> &nbsp &nbsp &nbsp &nbsp &nbsp <b>Severity: level <?php echo $crisis['Crisis']['gravite'] ?>&nbsp</b>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<b>Status:</b>
+									<?php echo $crisis['Crisis']['status'] ?>
+								</p>
+								<p>
+									<b>Type:</b>
+									<?php echo $crisis['Typecrise']['intitule'] ?>
+								</p>
+								<p>
+									<b>Actors:</b>
 									<?php
-										$i = 0;
-										foreach ($crisis['Acteur'] as $acteur): ?>
-		<tr>
-			<td><?php echo $acteur['id']; ?></td>
-			<td><?php echo $acteur['login']; ?></td>
-			<td><?php echo $acteur['pass']; ?></td>
-			<td><?php echo $acteur['nom']; ?></td>
-			<td><?php echo $acteur['type']; ?></td>
-			<td><?php echo $acteur['mail']; ?></td>
-			<td><?php echo $acteur['presentation']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'acteurs', 'action' => 'view', $acteur['id']), array('class' => 'btn btn-default btn-xs')); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'acteurs', 'action' => 'edit', $acteur['id']), array('class' => 'btn btn-default btn-xs')); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'acteurs', 'action' => 'delete', $acteur['id']), array('class' => 'btn btn-default btn-xs'), __('Are you sure you want to delete # %s?', $acteur['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-							</tbody>
-						</table><!-- /.table table-striped table-bordered -->
-					</div><!-- /.table-responsive -->
-					
-				<?php endif; ?>
+									$is_involved = false; 
+									foreach($crisis['Acteur'] as $acteur)
+									{
+										if($acteur['username'] == $logged_actor)
+											$is_involved = true;
+										echo $acteur['username'];
+									}
+									?>
+								</p>
+							</div>
+						</div>
+
+						<!-- afficher uniquement si connecté -->
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Edit crisis</b>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<?php echo $this->Html->link('<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> Edit informations</button>', array('controller' => 'crises', 'action' => 'edit', $crisis['Crisis']['id']), array('escape'=>false)); ?>
+								&nbsp
+								
+								<?php if($is_involved == false) { 
+									echo $this->Html->link('<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-log-in"></span> Become involved</button>', array('controller' => 'crises', 'action' => 'involve', 
+									$crisis['Crisis']['id']), array('escape'=>false)) ?>
+								&nbsp
+								<?php } else {
+									echo $this->Html->link('<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Stop involvment</button>', array('controller' => 'crises', 'action' => 'involve',
+									$crisis['Crisis']['id']), array('escape'=>false))?>
+								
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<b>Informations</b>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<?php echo $crisis['Crisis']['description'] ?>
 
 				<div class="actions">
 					<?php echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Acteur'), array('controller' => 'acteurs', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>				</div><!-- /.actions -->
 				
 			</div><!-- /.related -->
+								</p>
 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			
 	</div><!-- /#page-content .span9 -->
 
