@@ -1,5 +1,6 @@
 <script type="text/javascript">
 	var crises = new Array();
+	var lienInvolve = "";
 <?php
 	$i = 0;
 
@@ -15,6 +16,9 @@
 		echo "\tcrises[$i]['type'] = \"" .$crisis['Typecrise']['intitule']. "\";\n";
 		$i++;
 	}
+$testouille = $this->Html->link("involve", array("controller" => "crises", "action" => 
+"involve"));
+echo "lienInvolve = '" .$testouille. "';\n";
 ?>
 </script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -109,10 +113,9 @@ jQuery(document).ready(function() {
 	//var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(16.0989,16.6687),new google.maps.LatLng(18,18));
 	var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(0,-120),new google.maps.LatLng(0,120)); // Global view
 	map.fitBounds(bounds);
-
 	for (var i = 0; i < crises.length; i++) {
 		var lat = new google.maps.LatLng(crises[i]['centrey'], crises[i]['centrex']);
-		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status'];
+		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status']+ "<br /><strong>" +decodeURI(lienInvolve)+ "</strong> ";
 		var marker = new google.maps.Marker({
 			map: map,
 			position: lat,
