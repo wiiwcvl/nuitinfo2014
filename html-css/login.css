@@ -1,0 +1,9 @@
+
+.jumbotron {
+     background-color: #FFFFFF;
+}
+
+.jumbotron h2,
+.jumbotron .h2 {
+     color: #428bca;
+}
