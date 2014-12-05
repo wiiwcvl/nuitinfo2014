@@ -169,7 +169,7 @@ class CrisesController extends AppController {
 						$this->Crisis->saveField('rayon', $new_rayon + 10000); // 10000 = marge
 
 						$this->Session->setFlash('Crisis Reported');
-						return ;//$this->redirect(array("controller" => "news", "action" => "index"));
+						return $this->redirect(array("action" => "index"));
 
 					} else if($crisis['Crisis']['type'] == 1) {
 						$_crise = $crisis['Crisis'];
@@ -186,7 +186,7 @@ class CrisesController extends AppController {
 						$this->Crisis->saveField('rayon', $new_rayon + 10000); // 10000 = marge
 						$this->Crisis->saveField('type', $this->request->data['Crisis']['type']);
 						$this->Session->setFlash('Crisis Reported');
-						return ;//$this->redirect(array("controller" => "news", "action" => "index"));
+						return $this->redirect(array("action" => "index"));
 
 
 

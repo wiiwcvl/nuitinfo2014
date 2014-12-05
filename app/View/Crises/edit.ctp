@@ -28,9 +28,9 @@
 			</div><!-- .form-group -->
 
 	<div class="form-group" style="margin-top: 100px; margin-right: 5px;">
-        <?php echo $this->Form->label('name', 'Crisis Name', array('class' => "col-sm-2 control-label"));?>
+        <?php echo $this->Form->label('nom', 'Crisis Name', array('class' => "col-sm-2 control-label"));?>
         <div class="col-sm-4">
-        	<?php echo $this->Form->input('name', array('class' => 'form-control')) ?>
+        	<?php echo $this->Form->input('nom', array('class' => 'form-control')) ?>
         </div>
       </div>
       
@@ -45,7 +45,7 @@
     <div class="form-group" style="margin-right: 5px;">
       	<?php echo $this->Form->label('gravite', 'Severity level', array('class' => "col-sm-2 control-label"));?>
           <div class="col-sm-4">
-          	<?php echo $this->Form->input('gravite', array('class' => 'form-control')) ?>
+          	<?php echo $this->Form->input('gravite', array('class' => 'form-control', 'min' => 0, 'max' => 4)) ?>
             </textarea>
           </div>
     </div>
