@@ -8,30 +8,36 @@ App::uses('AppController', 'Controller');
  */
 class CrisesController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		// Allow users to register and logout.
+		$this->Auth->allow('view', 'index','signal');
+	}
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
 	public $components = array('Paginator');
 
-/**
- * index method
- *
- * @return void
- */
+	/**
+	 * index method
+	 *
+	 * @return void
+	 */
 	public function index() {
 		$this->Crisis->recursive = 0;
 		$this->set('crises', $this->Crisis->find('all'));
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+	/**
+	 * view method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
 	public function view($id = null) {
 		if (!$this->Crisis->exists($id)) {
 			throw new NotFoundException(__('Invalid crisis'));
@@ -40,11 +46,11 @@ class CrisesController extends AppController {
 		$this->set('crisis', $this->Crisis->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
+	/**
+	 * add method
+	 *
+	 * @return void
+	 */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Crisis->create();
@@ -59,18 +65,18 @@ class CrisesController extends AppController {
 		$this->set(compact('acteurs'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+	/**
+	 * edit method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
 	public function edit($id = null) {
 		$types = $this->Crisis->Typecrise->find("list",array("fields" => "intitule"));
 		$this->set("types",$types);
-		
-        $this->Crisis->id = $id;
+
+		$this->Crisis->id = $id;
 		if (!$this->Crisis->exists($id)) {
 			throw new NotFoundException(__('Invalid crisis'));
 		}
@@ -89,14 +95,14 @@ class CrisesController extends AppController {
 		$this->set(compact('acteurs'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @throws MethodNotAllowedException
+	 * @param string $id
+	 * @return void
+	 */
 	public function delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
@@ -125,29 +131,29 @@ class CrisesController extends AppController {
 		return $d * 1000;
 	}
 
-/**
- * signal method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
+	/**
+	 * signal method
+	 *
+	 * @throws NotFoundException
+	 * @throws MethodNotAllowedException
+	 * @param string $id
+	 * @return void
+	 */
 	public function signal() {
 		$types = $this->Crisis->Typecrise->find("list",array("fields" => "intitule"));
-		
+
 		$this->set("types",$types);
 		if ($this->request->is('post')) {
 			if($this->request->data['Crisis']['centrex'] == 0 || $this->request->data['Crisis']['centrey'] == 0)
 				return;
 
 			$Crisis = $this->Crisis->find("all");
-			
+
 			$delta_search = 0.5;
 			foreach ($Crisis as $crisis) {
-			
+
 				if (abs($crisis['Crisis']['centrex'] - $this->request->data['Crisis']['centrex'] ) < $delta_search
-				 && abs($crisis['Crisis']['centrey'] - $this->request->data['Crisis']['centrey'] ) < $delta_search ) {   //1° lat/long-> 111 km 
+					&& abs($crisis['Crisis']['centrey'] - $this->request->data['Crisis']['centrey'] ) < $delta_search ) {   //1° lat/long-> 111 km 
 					if($crisis['Crisis']['type'] == $this->request->data['Crisis']['type'] || $this->request->data['Crisis']['type'] == 1) {
 						$_crise = $crisis['Crisis'];
 						$this->Crisis->id = $_crise['id']; 
@@ -161,10 +167,10 @@ class CrisesController extends AppController {
 						$new_rayon = $this->measure($_crise['centrex'], $_crise['centrey'], $this->request->data['Crisis']['centrex'], $this->request->data['Crisis']['centrey']);
 						$this->Crisis->saveField("nbpings", $crisis['Crisis']['nbpings']+1);
 						$this->Crisis->saveField('rayon', $new_rayon + 10000); // 10000 = marge
-					
+
 						$this->Session->setFlash('Crisis Reported');
 						return ;//$this->redirect(array("controller" => "news", "action" => "index"));
-				
+
 					} else if($crisis['Crisis']['type'] == 1) {
 						$_crise = $crisis['Crisis'];
 						$this->Crisis->id = $_crise['id']; 
@@ -181,25 +187,25 @@ class CrisesController extends AppController {
 						$this->Crisis->saveField('type', $this->request->data['Crisis']['type']);
 						$this->Session->setFlash('Crisis Reported');
 						return ;//$this->redirect(array("controller" => "news", "action" => "index"));
-								
-
-
-							} 
 
 
 
-					}
+					} 
 
-					
-				}	
-		$this->Crisis->create();
-		$this->Crisis->saveField("type", $this->request->data['Crisis']['type']);
-		$this->Crisis->saveField("centrex", $this->request->data['Crisis']['centrex']);
-		$this->Crisis->saveField("centrey", $this->request->data['Crisis']['centrey']);
-		$this->Crisis->saveField("nbpings", 1);
-		$this->Crisis->saveField('rayon', 10000); // 10 KM
-		$this->Session->setFlash('Crisis created');
-		return $this->redirect(array("controller" => "news", "action" => "index"));
+
+
+				}
+
+
+			}	
+			$this->Crisis->create();
+			$this->Crisis->saveField("type", $this->request->data['Crisis']['type']);
+			$this->Crisis->saveField("centrex", $this->request->data['Crisis']['centrex']);
+			$this->Crisis->saveField("centrey", $this->request->data['Crisis']['centrey']);
+			$this->Crisis->saveField("nbpings", 1);
+			$this->Crisis->saveField('rayon', 10000); // 10 KM
+			$this->Session->setFlash('Crisis created');
+			return $this->redirect(array("controller" => "news", "action" => "index"));
 
 
 		}
