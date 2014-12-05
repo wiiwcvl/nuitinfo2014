@@ -35,11 +35,11 @@ class AppController extends Controller {
 		'Session',
 		'Auth' => array(
 			'loginRedirect' => array(
-				'controller' => 'crisis',
+				'controller' => 'crises',
 				'action' => 'index'
 			),
 			'logoutRedirect' => array(
-				'controller' => 'crisis',
+				'controller' => 'crises',
 				'action' => 'index'
 			),
 
@@ -57,8 +57,8 @@ class AppController extends Controller {
 		)
 	);
 
-/*	public function beforeFilter() {
+	public function beforeFilter() {
 		$this->Auth->allow('index', 'view');
-}*/
+}
 	public $theme = "Cakestrap";
 }

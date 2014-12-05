@@ -9,6 +9,13 @@ App::uses('AppController', 'Controller');
 class ActeursController extends AppController {
 
 	/**
+	 * Components
+	 *
+	 * @var array
+	 */
+	public $components = array('Paginator');
+
+	/**
 	 * index method
 	 *
 	 * @return void
@@ -16,29 +23,6 @@ class ActeursController extends AppController {
 	public function index() {
 		$this->Acteur->recursive = 0;
 		$this->set('acteurs', $this->paginate());
-	}
-
-	public $components = array(
-		'Paginator',
-	);
-
-	public function beforeFilter() {
-		parent::beforeFilter();
-		// Allow users to register and logout.
-		$this->Auth->allow('add', 'logout');
-	}
-
-	public function login() {
-		if ($this->request->is('post')) {
-			if ($this->Auth->login()) {
-				return $this->redirect($this->Auth->redirectUrl());
-			}
-			$this->Session->setFlash(__('Invalid username or password, try again'));
-		}
-	}
-
-	public function logout() {
-		return $this->redirect($this->Auth->logout());
 	}
 
 	/**
@@ -54,6 +38,27 @@ class ActeursController extends AppController {
 		}
 		$options = array('conditions' => array('Acteur.' . $this->Acteur->primaryKey => $id));
 		$this->set('acteur', $this->Acteur->find('first', $options));
+	}
+
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		// Allow users to register and logout.
+		$this->Auth->allow('add', 'logout');
+	}
+
+	public function login() {
+		if ($this->request->is('post')) {
+			echo "<pre>".print_r($this->request->data,true)."</pre>";
+			if ($this->Auth->login($this->request->data)) {
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Session->setFlash(__('Invalid username or password, try again'));
+		}
+	}
+
+	public function logout() {
+		return $this->redirect($this->Auth->logout());
 	}
 
 	/**
