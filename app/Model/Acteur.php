@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 /**
  * Acteur Model
  *
@@ -7,14 +8,23 @@ App::uses('AppModel', 'Model');
  * @property Crisis $Crisis
  */
 class Acteur extends AppModel {
+	public function beforeSave($options = array()) {
+		if (isset($this->data[$this->alias]['password'])) {
+			$passwordHasher = new BlowfishPasswordHasher();
+			$this->data[$this->alias]['password'] = $passwordHasher->hash(
+				$this->data[$this->alias]['password']
+			);
+		}
+		return true;
+	}
 
-/**
- * Validation rules
- *
- * @var array
- */
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
-		'login' => array(
+		'username' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -24,7 +34,7 @@ class Acteur extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'pass' => array(
+		'password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -68,11 +78,11 @@ class Acteur extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * hasMany associations
- *
- * @var array
- */
+	/**
+	 * hasMany associations
+	 *
+	 * @var array
+	 */
 	public $hasMany = array(
 		'News' => array(
 			'className' => 'News',
@@ -90,17 +100,17 @@ class Acteur extends AppModel {
 	);
 
 
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
+	/**
+	 * hasAndBelongsToMany associations
+	 *
+	 * @var array
+	 */
 	public $hasAndBelongsToMany = array(
 		'Crisis' => array(
 			'className' => 'Crisis',
 			'joinTable' => 'acteurs_crises',
 			'foreignKey' => 'acteur_id',
-			'associationForeignKey' => 'crise_id',
+			'associationForeignKey' => 'crisis_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',
