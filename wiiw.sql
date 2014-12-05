@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 04 Décembre 2014 à 18:39
+-- Généré le :  Ven 05 Décembre 2014 à 01:59
 -- Version du serveur :  10.0.15-MariaDB-log
 -- Version de PHP :  5.6.3
 
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `acteurs` (
 `id` int(11) NOT NULL,
-  `login` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `type` enum('ONG','Pouvoir Public') NOT NULL,
   `mail` varchar(255) NOT NULL,
   `presentation` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 
 CREATE TABLE IF NOT EXISTS `typecrises` (
 `id` int(11) NOT NULL,
-  `intitule` int(11) NOT NULL
+  `intitule` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `typecrises` (
 -- Index pour la table `acteurs`
 --
 ALTER TABLE `acteurs`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `login` (`login`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `login` (`username`);
 
 --
 -- Index pour la table `acteurs_crises`
@@ -134,7 +134,7 @@ ALTER TABLE `typecrises`
 -- AUTO_INCREMENT pour la table `acteurs`
 --
 ALTER TABLE `acteurs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `acteurs_crises`
 --
