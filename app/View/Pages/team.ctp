@@ -1,3 +1,18 @@
+<style>
+.team{
+    width: 80px;
+    height: 80px;
+}
+.membre{
+    width: auto;
+    height: 120px;
+}
+.centrage{
+    display: table;
+}
+
+</style>style>
+
 
 <body>
 <h1 class="text-center">Hello, world!</h1>
