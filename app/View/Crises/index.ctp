@@ -1,24 +1,25 @@
 <script type="text/javascript">
 	var crises = new Array();
-	var lienInvolve = "";
+	var liensInvolve = new Array();
 <?php
 	$i = 0;
+	$links = array();
 
 	foreach($crises as $crisis) {
 		echo "\tcrises[$i] = new Array();\n";
 		echo "\tcrises[$i]['gravite'] = " .$crisis['Crisis']['gravite']. ";\n";
 		echo "\tcrises[$i]['verifie'] = " .$crisis['Crisis']['verifie']. ";\n";
-		echo "\tcrises[$i]['centrex'] = " .$crisis['Crisis']['centrex']. ";\n";
+		echo "\tcrises[$i]['centrex'] = " .$crisis['Crisis'	]['centrex']. ";\n";
 		echo "\tcrises[$i]['centrey'] = " .$crisis['Crisis']['centrey']. ";\n";
 		echo "\tcrises[$i]['rayon'] = " .$crisis['Crisis']['rayon']. ";\n";
 		echo "\tcrises[$i]['nbpings'] = " .$crisis['Crisis']['nbpings']. ";\n";
 		echo "\tcrises[$i]['status'] = \"" .$crisis['Crisis']['status']. "\";\n";
 		echo "\tcrises[$i]['type'] = \"" .$crisis['Typecrise']['intitule']. "\";\n";
+
+		$links[$i] = $this->Html->link("involve", array('controller' => 'crises', 'action' => 'involve', $crisis['Crisis']['id']));
+		echo "\tliensInvolve[$i] = '" .$links[$i]. "';\n";
 		$i++;
 	}
-$testouille = $this->Html->link("involve", array("controller" => "crises", "action" => 
-"involve"));
-echo "lienInvolve = '" .$testouille. "';\n";
 ?>
 </script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -115,7 +116,7 @@ jQuery(document).ready(function() {
 	map.fitBounds(bounds);
 	for (var i = 0; i < crises.length; i++) {
 		var lat = new google.maps.LatLng(crises[i]['centrey'], crises[i]['centrex']);
-		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status']+ "<br /><strong>" +decodeURI(lienInvolve)+ "</strong> ";
+		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status']+ "<br /><strong>" +liensInvolve[i]+ "</strong> ";
 		var marker = new google.maps.Marker({
 			map: map,
 			position: lat,
