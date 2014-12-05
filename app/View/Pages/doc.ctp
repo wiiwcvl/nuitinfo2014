@@ -30,7 +30,7 @@
 		<h3>Organisations</h3>
 			<p>This section is about the organization which would react to
 				an event. There are for example non-governmental organization,
-				 territorial or local organizations. They can see in a second
+				 territorial or local organizations. They log in and they can see in a second
 				 what are the events ongoing around the world. The application also
 				allows them to confirm a given event if they are in the area of effect
 				of the event. If they are the first to
