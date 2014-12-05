@@ -120,6 +120,12 @@ class CrisesController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
+	public function subscribe($actor_id,$crisis_id) {
+		$crisis_actors = $this->Crisis->acteurs_crises->find("list",array("fields" => "all"));
+
+		return ;//$this->redirect(array('action' => 'view' ));
+	}
+
 	private function measure($x1, $y1, $x2, $y2)
 	{
 		$R = 6378.137;
