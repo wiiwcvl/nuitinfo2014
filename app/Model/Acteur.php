@@ -1,6 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
-App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * Acteur Model
  *
@@ -8,12 +8,14 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
  * @property Crisis $Crisis
  */
 class Acteur extends AppModel {
+
+	public static function hash($string){
+		$passwordHasher = new SimplePasswordHasher();
+		return ($passwordHasher->hash($string));
+	}
 	public function beforeSave($options = array()) {
 		if (isset($this->data[$this->alias]['password'])) {
-			$passwordHasher = new BlowfishPasswordHasher();
-			$this->data[$this->alias]['password'] = $passwordHasher->hash(
-				$this->data[$this->alias]['password']
-			);
+			$this->data[$this->alias]['password'] = self::hash($this->data[$this->alias]['password']);
 		}
 		return true;
 	}

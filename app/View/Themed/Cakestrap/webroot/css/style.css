@@ -1,0 +1,74 @@
+h1{
+	color : red;
+}
+
+h2{
+	color : brown;
+}
+
+h3{
+	color : grey;
+}
+
+h4{
+	color : black;
+}
+
+h5{
+	color : black;
+}
+
+h6{
+	color : black;
+}
+
+p{
+	color : grey;
+}
+
+.textbleu{
+	color : blue;
+}
+
+#moi{
+	color : green;
+}
+
+.un{
+	text.decoration : underline;	
+}
+
+.vert{
+	color : green;
+}
+.bigbutton{
+    font-size : 50px !important;
+}
+.big_button{
+	
+    font-size : 4em !important;
+}
+
+.greenbutton{
+	background-color : #00CC00 !important;
+}
+.redbutton{
+    background-color : #D00000  !important;
+}
+.yellowbutton{
+    background-color : #FFCC00 !important;
+}
+.orangebutton{
+    background-color : #FF6600 !important;
+}
+
+
+.jumbotron {
+     background-color: #FFFFFF !important;
+}
+
+.jumbotron h2,
+.jumbotron .h2 {
+     color: #428bca;
+}
+
