@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `crises` (
   `centrey` float NOT NULL,
   `rayon` int(11) NOT NULL,
   `nbpings` int(11) NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT '"New crisis"'
+  `status` varchar(255) NOT NULL DEFAULT 'New crisis'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

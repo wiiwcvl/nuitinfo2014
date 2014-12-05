@@ -7,31 +7,25 @@
 		<!--bootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+		  $("#navbar_ext").load("navbar.html"); 
+		});
+    </script> 
+
 
 	</head>
 		
 	<body>
 
-		<!-- navbar TODO:liens vers pages -->
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-			  <a class="navbar-brand" href="accueil.html">Home</a>
-			</div>
-			<div>
-			  <ul class="nav navbar-nav">
-				<li><a href="#">World view</a></li>
-				<li><a href="news.html">Local News</a></li>
-		      </ul>
-			 <ul class="nav navbar-nav navbar-right">
-		        <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
+		<!-- navbar externe-->
+
+     <div id="navbar_ext"></div>
 
 		<!--panels du haut-->
-			<div class="container-fluid">
+			<div class="container-fluid" style="margin-top: 60px">
 				<div class="row">
 					<div class="col-sm-8">
 						<div class="panel panel-danger">
@@ -85,13 +79,20 @@
 								</h3>
 							</div>
 							<div class="panel-body">
-								<button type="button" class="btn btn-danger">Edit informations</button>
-								<button type="button" class="btn btn-danger">Add an event</button>
+								<a href="editcrisis.html"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> Edit informations</button></a>
+								&nbsp
+								<!-- si pas encore involved-->
+								<a href="involvment.html"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-log-in"></span> Become involved</button></a>
+								&nbsp
+								<!-- si involved-->
+								<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Stop involvment</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
 
 		<!--bootstrap-->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

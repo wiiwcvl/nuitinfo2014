@@ -4,32 +4,31 @@
     
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="login.css">
-		<title>Inscription</title>
+		<link rel="stylesheet" href="signup.css">
+		<title>Sign Up</title>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+		  $("#navbar_ext").load("navbar.html"); 
+		});
+	</script> 
+
 	</head>
 
+
+
  	<body class="container-fluid">
-		<!-- navbar TODO:liens vers pages -->
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-			<div class="navbar-header">
-			<a class="navbar-brand" href="accueil.html">Home</a>
-			</div>
-			<div>
-			<ul class="nav navbar-nav">
-				<li><a href="#">World view</a></li>
-				<li><a href="news.html">Local News</a></li>
-		      	</ul>
-			<ul class="nav navbar-nav navbar-right">
-		        <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-			</ul>
-			</div>
-		 	</div>
-		</nav>
+
+	<!-- navbar externe-->
+
+   	<div id="navbar_ext"></div>
 
 
 		<div class="text-center jumbotron">
-  		<h2>Inscription</h2>
+  		<h2>Signing up</h2>
   		<p>If you belong to a humanitarian association, a NGO, a local, national or international organization you can register yourself by completing the fields below.</p>
 		</div>		
 

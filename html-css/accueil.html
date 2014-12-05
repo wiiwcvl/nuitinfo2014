@@ -5,18 +5,34 @@
 		<meta charset="utf-8" />
 		<title>Homepage</title>
 		<link href="style.css" rel='stylesheet'/>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+		  $("#navbar_ext").load("navbar.html"); 
+		});
+    </script> 
+
+
 	</head>
 		
-	<body background>
+	<body>
 
-<div class="row container">
-<div class="jumbotron col-lg-6 col-lg-offset-4">
+
+	<!-- navbar externe-->
+
+     <div id="navbar_ext"></div>
+
+
+
+<div class="row container-fluid" style="margin-top: 60px">
+<div class="jumbotron col-sm-6 col-sm-offset-4" style="margin-top: 10px">
 <form role="form">
   <div class="form-group">
   </div>
@@ -38,7 +54,6 @@
 </div>
 </div>
 </div>
-
 
 
 
