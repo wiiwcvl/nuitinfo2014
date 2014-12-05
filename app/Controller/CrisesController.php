@@ -168,7 +168,7 @@ class CrisesController extends AppController {
 						$this->Crisis->saveField("nbpings", $crisis['Crisis']['nbpings']+1);
 						$this->Crisis->saveField('rayon', $new_rayon + 10000); // 10000 = marge
 
-						$this->Session->setFlash('Crisis Reported');
+						$this->Session->setFlash('Crisis Reported','flash/success');
 						return $this->redirect(array("action" => "index"));
 
 					} else if($crisis['Crisis']['type'] == 1) {
@@ -185,17 +185,11 @@ class CrisesController extends AppController {
 						$this->Crisis->saveField("nbpings", $crisis['Crisis']['nbpings']+1);
 						$this->Crisis->saveField('rayon', $new_rayon + 10000); // 10000 = marge
 						$this->Crisis->saveField('type', $this->request->data['Crisis']['type']);
-						$this->Session->setFlash('Crisis Reported');
+						$this->Session->setFlash('Crisis Reported','flash/success');
 						return $this->redirect(array("action" => "index"));
-
-
-
 					} 
 
-
-
 				}
-
 
 			}	
 			$this->Crisis->create();
@@ -204,14 +198,10 @@ class CrisesController extends AppController {
 			$this->Crisis->saveField("centrey", $this->request->data['Crisis']['centrey']);
 			$this->Crisis->saveField("nbpings", 1);
 			$this->Crisis->saveField('rayon', 10000); // 10 KM
-			$this->Session->setFlash('Crisis created');
+			$this->Session->setFlash('Crisis created','flash/success');
 			return $this->redirect(array("controller" => "news", "action" => "index"));
 
-
 		}
-
-
-
 
 	}
 
