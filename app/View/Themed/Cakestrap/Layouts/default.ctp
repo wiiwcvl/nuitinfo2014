@@ -16,16 +16,12 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
 <?php echo $this->Html->docType('html5'); ?> 
 <html>
 	<head>
 		<?php echo $this->Html->charset(); ?>
-		<title>
-			<?php echo $cakeDescription ?>:
-			<?php echo $title_for_layout; ?>
-		</title>
+		<title>Ishara - Crisis detection tool</title>
 		<?php
 			echo $this->Html->meta('icon');
 			
@@ -65,15 +61,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			</div><!-- /#footer .container -->
 			
 		</div><!-- /#main-container -->
-		
-		<div class="container">
-			<div class="well well-sm">
-				<small>
-					<?php echo $this->element('sql_dump'); ?>
-				</small>
-			</div><!-- /.well well-sm -->
-		</div><!-- /.container -->
-		
 	</body>
 
 </html>
