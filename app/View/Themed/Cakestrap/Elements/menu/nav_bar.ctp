@@ -7,16 +7,15 @@
 		  <span class="icon-bar"></span>
 		  <span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="accueil.html">Home</a>
+		  <?php echo $this->Html->link("Home",array('controller'=>'crises','action'=>'signal'),array('class' => 'navbar-brand')); ?>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			 <ul class="nav navbar-nav">
-				<li><a href="#">World view</a></li>
-				<li><a href="news.html">Local News</a></li>
+				<li><?php echo $this->Html->link("World view",array('controller'=>'crises','action'=>'index')); ?></li>
 			 </ul>
 			 <ul class="nav navbar-nav navbar-right">
-				<li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
-				<li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><?php echo $this->Html->link("<span class='glyphicon glyphicon-log-in'></span> Log in",array('controller'=>'acteurs','action'=>'login'),array('escape' => false)); ?></li>
+				<li><?php echo $this->Html->link("<span class='glyphicon glyphicon-user'></span> Sign up",array('controller'=>'acteurs','action'=>'add'),array('escape'=>false)); ?></li>
 			 </ul>
 		</div>
 	</div>
