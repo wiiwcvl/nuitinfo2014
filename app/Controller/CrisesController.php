@@ -46,6 +46,15 @@ class CrisesController extends AppController {
 		$this->set('crisis', $this->Crisis->find('first', $options));
 	}
 
+	/*public function involve($id = null) {
+		if (!$this->Crisis->exists($id)) {
+			throw new NotFoundException(__('Invalid crisis'));
+		}
+		$reply = $this->Crisis->Acteur->find('first', array('username' => $this->Auth->user()['username']));
+		$this->Crisis->Acteurs_crises->create();
+		$this->Crisis->Acteurs_crises->save(array('acteur_id' => $reply['Acteur']['id'], 'crisis_id' => $id));
+	}*/
+
 	/**
 	 * add method
 	 *

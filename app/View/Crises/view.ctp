@@ -30,7 +30,7 @@
 					<tbody>
 						<tr>		<td><strong><?php echo __('Id'); ?></strong></td>
 		<td>
-			<?php echo h($crisis['Crisis']['id']); ?>
+			<?php echo $crisis['Crisis']['id']; ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('Type'); ?></strong></td>
@@ -125,8 +125,6 @@
 					
 				<?php endif; ?>
 
-<pre><?php print_r($crisis); ?></pre>
-				
 				<div class="actions">
 					<?php echo $this->Html->link('<i class="icon-plus icon-white"></i> '.__('New Acteur'), array('controller' => 'acteurs', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>				</div><!-- /.actions -->
 				

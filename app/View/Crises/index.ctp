@@ -16,8 +16,11 @@
 		echo "\tcrises[$i]['status'] = \"" .$crisis['Crisis']['status']. "\";\n";
 		echo "\tcrises[$i]['type'] = \"" .$crisis['Typecrise']['intitule']. "\";\n";
 
-		$links[$i] = $this->Html->link("involve", array('controller' => 'crises', 'action' => 'involve', $crisis['Crisis']['id']));
-		echo "\tliensInvolve[$i] = '" .$links[$i]. "';\n";
+		//$links[$i]['involve'] = $this->Html->link("involve", array('controller' => 'crises', 'action' => 'involve', $crisis['Crisis']['id']));
+		$links[$i]['details'] = $this->Html->link("details", array('controller' => 'crises', 'action' => 'view', $crisis['Crisis']['id']));
+		echo "\tliensInvolve[$i] = new Array();\n";
+		//echo "\tliensInvolve[$i]['involve'] = '" .$links[$i]['involve']. "';\n";
+		echo "\tliensInvolve[$i]['details'] = '" .$links[$i]['details']. "';\n";
 		$i++;
 	}
 ?>
@@ -116,7 +119,7 @@ jQuery(document).ready(function() {
 	map.fitBounds(bounds);
 	for (var i = 0; i < crises.length; i++) {
 		var lat = new google.maps.LatLng(crises[i]['centrey'], crises[i]['centrex']);
-		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status']+ "<br /><strong>" +liensInvolve[i]+ "</strong> ";
+		var content = "<strong>Latitude: </strong> " +crises[i]['centrey']+ "<br /><strong>Longitude: </strong> " +crises[i]['centrex']+ "<br /><strong>Crise : </strong>" +crises[i]['type']+ "<br /><strong>Status: </strong> " +crises[i]['status']+ "<br /><strong style=\"float: left;\">" +liensInvolve[i]['details']+ "</strong>"/*<strong style=\"float: right;\">" +liensInvolve[i]['involve']+ "</strong>"*/;
 		var marker = new google.maps.Marker({
 			map: map,
 			position: lat,
