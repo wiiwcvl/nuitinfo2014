@@ -21,6 +21,7 @@ p{
   float: right;
 }
 
-.comp-only
-{
+.div_vcenter {
+  position: relative;
+  transform: translateY(50%);
 }
