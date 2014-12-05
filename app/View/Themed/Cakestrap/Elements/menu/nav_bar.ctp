@@ -12,6 +12,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			 <ul class="nav navbar-nav">
 				<li><?php echo $this->Html->link("World view",array('controller'=>'crises','action'=>'index')); ?></li>
+				<li><?php echo $this->Html->link("Our team",array('controller'=>'pages','action'=>'team')); ?></li>
 			 </ul>
 			 <ul class="nav navbar-nav navbar-right">
 				<li><?php echo $this->Html->link("<span class='glyphicon glyphicon-log-in'></span> Log in",array('controller'=>'acteurs','action'=>'login'),array('escape' => false)); ?></li>
