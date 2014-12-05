@@ -31,13 +31,13 @@
 </div><!-- .form-group -->
 
 <div class="form-group">
-	<?php echo $this->Form->label('login', 'login');?>
-		<?php echo $this->Form->input('login', array('class' => 'form-control')); ?>
+	<?php echo $this->Form->label('username', 'username');?>
+		<?php echo $this->Form->input('username', array('class' => 'form-control')); ?>
 </div><!-- .form-group -->
 
 <div class="form-group">
-	<?php echo $this->Form->label('pass', 'pass');?>
-		<?php echo $this->Form->input('pass', array('class' => 'form-control')); ?>
+	<?php echo $this->Form->label('password', 'password');?>
+		<?php echo $this->Form->input('password', array('class' => 'form-control')); ?>
 </div><!-- .form-group -->
 
 <div class="form-group">

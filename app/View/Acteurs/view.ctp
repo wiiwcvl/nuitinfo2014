@@ -35,14 +35,14 @@
 			<?php echo h($acteur['Acteur']['id']); ?>
 			&nbsp;
 		</td>
-</tr><tr>		<td><strong><?php echo __('Login'); ?></strong></td>
+</tr><tr>		<td><strong><?php echo __('Username'); ?></strong></td>
 		<td>
-			<?php echo h($acteur['Acteur']['login']); ?>
+			<?php echo h($acteur['Acteur']['username']); ?>
 			&nbsp;
 		</td>
-</tr><tr>		<td><strong><?php echo __('Pass'); ?></strong></td>
+</tr><tr>		<td><strong><?php echo __('Password'); ?></strong></td>
 		<td>
-			<?php echo h($acteur['Acteur']['pass']); ?>
+			<?php echo h($acteur['Acteur']['password']); ?>
 			&nbsp;
 		</td>
 </tr><tr>		<td><strong><?php echo __('Nom'); ?></strong></td>

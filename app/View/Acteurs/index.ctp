@@ -27,8 +27,8 @@
 					<thead>
 						<tr>
 															<th><?php echo $this->Paginator->sort('id'); ?></th>
-															<th><?php echo $this->Paginator->sort('login'); ?></th>
-															<th><?php echo $this->Paginator->sort('pass'); ?></th>
+															<th><?php echo $this->Paginator->sort('username'); ?></th>
+															<th><?php echo $this->Paginator->sort('password'); ?></th>
 															<th><?php echo $this->Paginator->sort('nom'); ?></th>
 															<th><?php echo $this->Paginator->sort('type'); ?></th>
 															<th><?php echo $this->Paginator->sort('mail'); ?></th>
@@ -41,8 +41,8 @@
 						foreach ($acteurs as $acteur): ?>
 	<tr>
 		<td><?php echo h($acteur['Acteur']['id']); ?>&nbsp;</td>
-		<td><?php echo h($acteur['Acteur']['login']); ?>&nbsp;</td>
-		<td><?php echo h($acteur['Acteur']['pass']); ?>&nbsp;</td>
+		<td><?php echo h($acteur['Acteur']['username']); ?>&nbsp;</td>
+		<td><?php echo h($acteur['Acteur']['password']); ?>&nbsp;</td>
 		<td><?php echo h($acteur['Acteur']['nom']); ?>&nbsp;</td>
 		<td><?php echo h($acteur['Acteur']['type']); ?>&nbsp;</td>
 		<td><?php echo h($acteur['Acteur']['mail']); ?>&nbsp;</td>
