@@ -2,44 +2,41 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Crisis details</title>
+		<title>Local news</title>
 		<link href="cris_style.css" rel='stylesheet'/>
 		<!--bootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script> 
+		$(function(){
+		  $("#navbar_ext").load("navbar.html"); 
+		});
+    </script> 
 
 	</head>
 		
 	<body>
 
 
-		<!-- navbar TODO:liens vers pages -->
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-			  <a class="navbar-brand" href="accueil.html">Home</a>
-			</div>
-			<div>
-			  <ul class="nav navbar-nav">
-				<li><a href="#">World view</a></li>
-				<li class="active"><a href="#">Local News</a></li>
-		      </ul>
-			 <ul class="nav navbar-nav navbar-right">
-		        <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
+	<!-- navbar externe-->
+
+     <div id="navbar_ext"></div>
 
 
-		<div class="container-fluid">
+		<div class="container-fluid" style="margin-top: 60px">
 			<div class="row">
 				<div class="col-sm-3">
-					<button type="button" class="btn btn-danger btn-lg bigbutton"> SIGNAL A CRISIS </button>
+					<a href="accueil.html"><button type="button" class="btn btn-danger btn-lg"> SIGNAL A CRISIS </button></a>
 				</div>
 				<div class="col-sm-9">
-					<div id="newsCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+
+
+				<!-- carousel seulement si tablette ou pc) -->
+
+					<div id="newsCarousel" class="carousel slide hidden-xs" data-interval="3000" data-ride="carousel">
 
 						<ol class="carousel-indicators">
 							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -49,63 +46,65 @@
 
 						<div class="carousel-inner">
 							<div class="item active">
-								TEST1
 								<br>
-								<br>
-								<br>
-								<br>
-							</div>
-							<div class="item">
-								TEST2
-								<br>
+								<center>NEWS1</center>
 								<br>
 								<br>
 								<br>
 							</div>
 							<div class="item">
-								TESTICULE
 								<br>
+								<center>NEWS2</center>
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="item">
+								<br>
+								<center>NEWS3</center>
 								<br>
 								<br>
 								<br>
 							</div>
 						</div>
 
-						<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+						<a class="carousel-control left" href="#newsCarousel" data-slide="prev">
 							<span class="glyphicon glyphicon-chevron-left"></span>
 						</a>
-						<a class="carousel-control right" href="#myCarousel" data-slide="next">
+						<a class="carousel-control right" href="#newsCarousel" data-slide="next">
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</a>
 					</div>
+
 				</div>
 			</div>
 		</div>
 		
 		<br>
 
+		<!--  -->
 		<div class="panel panel-danger">
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					<b>Local crisis</b>
-						<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%"></div></div>
 				</h3>
 			</div>
 			<div class="panel-body">
 				<p>
-					Crise Test1
+					<a href="crisis.html">Crise Test1</a>
 				</p>
 				<p>
-					Crise Test2
+					<a href="crisis.html">Crise Test2</a>
 				</p>
 				<p>
-					Crise Testicule
+					<a href="crisis.html">Crise Testicule</a>
 				</p>
 			</div>
 		</div>
 
 
 		<!--bootstrap-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 	</body>
