@@ -1,25 +1,5 @@
 
 <div id="page-container" class="row">
-
-	<div id="sidebar" class="col-sm-3">
-		
-		<div class="actions">
-			
-			<ul class="list-group">			
-						<li class="list-group-item"><?php echo $this->Html->link(__('Edit Acteur'), array('action' => 'edit', $acteur['Acteur']['id']), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Form->postLink(__('Delete Acteur'), array('action' => 'delete', $acteur['Acteur']['id']), array('class' => ''), __('Are you sure you want to delete # %s?', $acteur['Acteur']['id'])); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Acteurs'), array('action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Acteur'), array('action' => 'add'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List News'), array('controller' => 'news', 'action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New News'), array('controller' => 'news', 'action' => 'add'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('List Crises'), array('controller' => 'crises', 'action' => 'index'), array('class' => '')); ?> </li>
-		<li class="list-group-item"><?php echo $this->Html->link(__('New Crisis'), array('controller' => 'crises', 'action' => 'add'), array('class' => '')); ?> </li>
-				
-			</ul><!-- /.list-group -->
-			
-		</div><!-- /.actions -->
-		
-	</div><!-- /#sidebar .span3 -->
 	
 	<div id="page-content" class="col-sm-9">
 		

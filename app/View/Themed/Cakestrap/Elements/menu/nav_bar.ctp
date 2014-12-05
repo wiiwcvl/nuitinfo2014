@@ -12,6 +12,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><?php echo $this->Html->link("World view",array('controller'=>'crises','action'=>'index')); ?></li>
+				<li><?php echo $this->Html->link("News",array('controller'=>'news','action'=>'index')); ?></li>
 				<li><?php echo $this->Html->link("Project presentation",array('controller'=>'pages','action'=>'doc')); ?></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
