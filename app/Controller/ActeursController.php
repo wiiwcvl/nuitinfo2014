@@ -73,7 +73,7 @@ class ActeursController extends AppController {
 			$this->Acteur->create();
 			if ($this->Acteur->save($this->request->data)) {
 				$this->Session->setFlash(__('The acteur has been saved'), 'flash/success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'login'));
 			} else {
 				$this->Session->setFlash(__('The acteur could not be saved. Please, try again.'), 'flash/error');
 			}
